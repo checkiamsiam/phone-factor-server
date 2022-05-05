@@ -24,7 +24,7 @@ async function run() {
       const query = req.query;
       const cursor = await productsCollection.find(query);
       const result = await cursor.toArray();
-      res.send(result);
+      await res.send(result);
     })
 
 
