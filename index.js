@@ -27,11 +27,15 @@ async function run() {
       await res.send(result);
     })
 
+    //post data from db
+
     app.post('/products', async (req, res) => {
       const postItem = req.body;
       const result = await productsCollection.insertOne(postItem);
       res.send(result)
     })
+
+    //edit a single data from db
 
     app.put('/products/:id', async (req, res) => {
       const id = req.params.id;
@@ -44,9 +48,11 @@ async function run() {
       res.send(result)
     })
 
+    //delete one from db
+
     app.delete('/products/:id', async (req, res) => {
       const id = req.params.id;
-      const deleteItem = { _id: ObjectId(id) }; 
+      const deleteItem = { _id: ObjectId(id) };
       const result = await productsCollection.deleteOne(deleteItem);
       res.send(result)
 
@@ -65,7 +71,7 @@ run().catch(console.log)
 
 
 app.get('/', (req, res) => {
-  res.send('here is your server side')
+  res.send('Hello Server site is here!!!')
 })
 
 
