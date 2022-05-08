@@ -27,6 +27,12 @@ async function run() {
       await res.send(result);
     })
 
+    app.post('/products', async (req, res) => {
+      const postItem = req.body;
+      const result = await productsCollection.insertOne(postItem);
+      res.send(result)
+    })
+
     app.put('/products/:id', async (req, res) => {
       const id = req.params.id;
       const updateItem = { _id: ObjectId(id) };
